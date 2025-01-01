@@ -15,8 +15,13 @@ test: ## Run tests
 lock: ## Lock dependencies
 	uv lock
 
+
 install: ## Setup the project
 	uv sync --all-groups
+	$(MAKE) install-cards-proj
+
+install-cards-proj: ## Install cards project
+	uv pip install ./cards_proj
 
 train: ## Train the model
 	uv run python train.py
